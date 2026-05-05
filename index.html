@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIネイティブ語学学習アプリのご紹介 | OEM提供のご案内</title>
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-light: #6366F1;
+      --primary-dark: #3730A3;
+      --bg: #FAFBFF;
+      --text: #1E293B;
+      --text-sub: #64748B;
+      --card-bg: #FFFFFF;
+      --accent: #F59E0B;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #818CF8 100%);
+      color: white;
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--bg);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .hero .lead {
+      font-size: clamp(16px, 2.5vw, 20px);
+      opacity: 0.9;
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+    /* ── Section ── */
+    section { padding: 64px 0; }
+    .section-title {
+      text-align: center;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 16px;
+      max-width: 660px;
+      margin: 0 auto 48px;
+    }
+
+    /* ── Intro prose ── */
+    .intro-prose {
+      max-width: 740px;
+      margin: 0 auto;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .intro-prose p { margin-bottom: 16px; }
+    .intro-prose strong { color: var(--primary-dark); }
+
+    /* ── AI-native callout ── */
+    .callout {
+      background: linear-gradient(135deg, #EEF2FF, #E0E7FF);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin: 32px auto;
+      max-width: 740px;
+    }
+    .callout h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+    .callout ul {
+      list-style: none;
+      padding: 0;
+    }
+    .callout li {
+      padding: 4px 0;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .callout li::before {
+      content: '1.';
+      color: var(--primary);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .callout li:nth-child(2)::before { content: '2.'; }
+    .callout li:nth-child(3)::before { content: '3.'; }
+
+    /* ── Features grid ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(79,70,229,0.12);
+    }
+    .feature-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 { font-size: 18px; margin-bottom: 8px; }
+    .feature-card p { color: var(--text-sub); font-size: 14px; }
+    .feature-card .note {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #94A3B8;
+      font-style: italic;
+    }
+
+    /* ── Screenshots ── */
+    .screenshots {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px 0;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .screenshots::-webkit-scrollbar { display: none; }
+    .screenshot-item {
+      flex: 0 0 auto;
+      width: 240px;
+      scroll-snap-align: center;
+      text-align: center;
+    }
+    .screenshot-item img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .screenshot-item .caption {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+    .screenshot-placeholder {
+      width: 100%;
+      aspect-ratio: 9/19.5;
+      background: linear-gradient(135deg, #E2E8F0, #F1F5F9);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94A3B8;
+      font-size: 13px;
+      text-align: center;
+      padding: 20px;
+      border: 2px dashed #CBD5E1;
+    }
+
+    /* ── Usecases ── */
+    .usecases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .usecase-group {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .usecase-group h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #E0E7FF;
+    }
+    .usecase-group ul {
+      list-style: none;
+      padding: 0;
+    }
+    .usecase-group li {
+      padding: 5px 0;
+      font-size: 14px;
+      color: var(--text-sub);
+      position: relative;
+      padding-left: 20px;
+    }
+    .usecase-group li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ── Target audience ── */
+    .target-box {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 740px;
+      margin: 0 auto;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .target-box h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .target-box p {
+      color: var(--text-sub);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    /* ── OEM section ── */
+    .oem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .oem-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 28px;
+      border-left: 4px solid var(--primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .oem-card h4 { font-size: 16px; margin-bottom: 6px; color: var(--primary-dark); }
+    .oem-card p { font-size: 14px; color: var(--text-sub); }
+
+    /* ── Comparison table ── */
+    .comparison { overflow-x: auto; }
+    .comparison table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .comparison th, .comparison td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .comparison thead th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+    .comparison thead th:first-child { border-radius: 10px 0 0 0; }
+    .comparison thead th:last-child { border-radius: 0 10px 0 0; }
+    .comparison tbody tr:hover { background: #F8FAFC; }
+    .comparison .check { color: #22C55E; font-weight: bold; }
+    .comparison .cross { color: #EF4444; }
+    .comparison .planned { color: #F59E0B; font-size: 12px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #1E293B, #334155);
+      color: white;
+      padding: 64px 0;
+      text-align: center;
+    }
+    .cta-section h2 { font-size: clamp(22px, 4vw, 32px); margin-bottom: 16px; }
+    .cta-section p { opacity: 0.8; max-width: 600px; margin: 0 auto 32px; font-size: 16px; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #1E293B;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .cta-btn:hover { transform: translateY(-2px); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      color: var(--text-sub);
+      font-size: 13px;
+      border-top: 1px solid #E2E8F0;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .hero { padding: 60px 0 48px; }
+      section { padding: 48px 0; }
+      .feature-card { padding: 24px; }
+      .screenshot-item { width: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- Hero -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-badge">iOS / Android / AIネイティブ設計</div>
+    <h1>AIネイティブ<br>語学学習アプリ</h1>
+    <p class="lead">
+      私たちが開発している語学学習アプリのご紹介です。<br>
+      貴社の教室向けに、OEMとしてカスタマイズ提供が可能です。
+    </p>
+    <a href="#contact" class="hero-cta">詳しく見る</a>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- What is this -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">このアプリについて</h2>
+    <div class="intro-prose">
+      <p>
+        本アプリは、<strong>コンテンツのすべてをAIが生成する</strong>語学学習アプリです。
+        既存の英語学習アプリの多くは、あらかじめ用意された問題セットを繰り返す形式ですが、
+        本アプリでは問題・会話・記事・音声のすべてをAIがリアルタイムに生成します。
+      </p>
+      <p>
+        そのため、<strong>一人ひとりのレベル・弱点・学習履歴に合わせた内容</strong>を、
+        毎回異なる形で提供できます。同じ問題を何度も解くのではなく、
+        その人に必要な練習を、必要なタイミングで届ける設計です。
+      </p>
+    </div>
+
+    <div class="callout">
+      <h3>「オールAI」であることの意味</h3>
+      <ul>
+        <li><strong>その人に特化した問題を出す</strong> &mdash; レベル・苦手分野・過去の間違いを踏まえて、毎回新しい問題を生成します</li>
+        <li><strong>個別に学習状況を管理する</strong> &mdash; 何を学んだか、どこでつまずいたかをAIが把握し、復習タイミングを最適化します</li>
+        <li><strong>傾向を把握する</strong> &mdash; 生徒ごとの正答率・弱点分野・学習頻度を可視化。指導にも活用できます</li>
+      </ul>
+    </div>
+
+    <div class="intro-prose">
+      <p>
+        コンテンツをAIが生成するため、他の英語アプリが対応しているような学習領域
+        &mdash; 単語・文法・リスニング・英作文・会話など &mdash; は<strong>ほぼ網羅</strong>できます。
+        問題をあらかじめ用意する必要がないので、新しいカテゴリや試験対策の追加も柔軟に行えます。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- Target audience -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section style="background: #F1F5F9;">
+  <div class="container">
+    <h2 class="section-title">想定している学習者層</h2>
+    <div class="target-box">
+      <h3>Duolingoの「その先」で苦労している方へ</h3>
+      <p>
+        Duolingoのような初級向けアプリで基礎を身につけた後、
+        「中級から上が伸びない」「実際の会話になると使えない」という壁にぶつかる学習者は少なくありません。
+      </p>
+      <p>
+        本アプリは、<strong>基礎を終えた学習者が、実践的な英語力を身につけるための練習環境</strong>として設計しています。
+        CEFR B1〜C1レベルを中心に、ビジネス英語・試験対策・日常会話を、
+        AIとの対話やドリルを通じて鍛えることができます。
+      </p>
+      <p style="color: var(--text); font-weight: 500;">
+        貴社の教室に通う生徒さんが、授業の外でも効果的に練習できるツールとしてお役に立てればと考えています。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- Features -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">主な機能</h2>
+    <p class="section-sub">現在実装済みの機能です。すべてAIによるリアルタイム生成で動作します。</p>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>AIフリートーク</h3>
+        <p>生徒のレベルに合わせてAIが自然な会話を行います。文法ミスのリアルタイム指摘、より良い表現の提案、音声入出力に対応しています。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>6種類のドリル</h3>
+        <p>単語・イディオム・文法・構文・リスニング・英作文。CEFRレベルに応じた問題をAIが毎回異なる内容で生成します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🃏</div>
+        <h3>間隔反復フラッシュカード</h3>
+        <p>間違えた問題は自動で復習カードに追加。SM-2アルゴリズムにより、忘れかけたタイミングで再出題されます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📰</div>
+        <h3>AIニュース記事</h3>
+        <p>生徒のレベルに合わせた英語記事をAIが生成。長文読解と時事英語の両方を鍛えられます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎧</div>
+        <h3>リスニング 3モード</h3>
+        <p>ディクテーション・要点把握・シャドーイング。ネイティブ品質の音声合成で、聞き取り力を強化します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎙️</div>
+        <h3>発音練習</h3>
+        <p>音声認識を活用した発音練習機能です。</p>
+        <span class="note">※ より高精度な発音評価機能を現在開発中です</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- What you can do -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section style="background: #F1F5F9;">
+  <div class="container">
+    <h2 class="section-title">たとえば、こんなことができます</h2>
+    <p class="section-sub">AIがコンテンツを生成するため、使い方の幅が広いのが特長です。</p>
+
+    <div class="usecases">
+      <div class="usecase-group">
+        <h3>会話・スピーキング</h3>
+        <ul>
+          <li>AIとの英語フリートーク（テーマ自由、レベル自動調整）</li>
+          <li>「カフェで注文する」「面接を受ける」などシーン別のロールプレイ</li>
+          <li>会話中の文法ミスをリアルタイムで指摘、より自然な言い回しを提案</li>
+          <li>音声入力で話しかけ、AIの返答も音声で聞ける</li>
+          <li>生徒が言った内容をAIが添削し、模範文をフィードバック</li>
+        </ul>
+      </div>
+
+      <div class="usecase-group">
+        <h3>語彙・文法</h3>
+        <ul>
+          <li>TOEIC / TOEFL / IELTS / 英検の頻出語彙を4択ドリルで出題</li>
+          <li>過去に間違えた単語を優先的に再出題（弱点克服モード）</li>
+          <li>イディオム・句動詞の意味と使い方をドリル形式で学習</li>
+          <li>時制・冠詞・前置詞など文法の穴を特定して集中練習</li>
+          <li>Duolingo風のドラッグ&ドロップ構文並べ替え練習</li>
+          <li>間違えた問題は自動でフラッシュカードに追加、忘却曲線に沿って復習</li>
+        </ul>
+      </div>
+
+      <div class="usecase-group">
+        <h3>リスニング・読解</h3>
+        <ul>
+          <li>ディクテーション &mdash; 音声を聞いて書き取り、AIが採点</li>
+          <li>要点把握 &mdash; パッセージを聞いて、内容に合う要約を選択</li>
+          <li>シャドーイング &mdash; お手本音声に続いて復唱、音声認識で評価</li>
+          <li>生徒のレベルに合わせた英語ニュース記事をAIが生成</li>
+          <li>記事中のわからない単語をタップすると意味と例文を表示</li>
+        </ul>
+      </div>
+
+      <div class="usecase-group">
+        <h3>英作文</h3>
+        <ul>
+          <li>AIが出題したテーマについて英語で文章を書く練習</li>
+          <li>文法・語彙・構成の観点でAIが添削・採点</li>
+          <li>「ビジネスメール」「エッセイ」「日記」など形式を選べる</li>
+        </ul>
+      </div>
+
+      <div class="usecase-group">
+        <h3>学習管理・分析</h3>
+        <ul>
+          <li>生徒ごとの学習時間・正答率・弱点分野を自動で記録</li>
+          <li>「この生徒は前置詞が弱い」「リスニングの正答率が低い」など傾向を可視化</li>
+          <li>CEFRレベル（A1〜C2）に基づいた到達度の把握</li>
+          <li>講師・保護者向けのダッシュボード画面で一覧管理</li>
+        </ul>
+      </div>
+
+      <div class="usecase-group">
+        <h3>カスタマイズ例</h3>
+        <ul>
+          <li>「今週のUnit 5の単語だけ出題してほしい」→ カリキュラム連動で対応</li>
+          <li>「英検2級対策に特化したドリルがほしい」→ 試験モードで対応</li>
+          <li>「教室のロゴとカラーでアプリを出したい」→ OEMブランディングで対応</li>
+          <li>「生徒の進捗を保護者にメールで報告したい」→ ダッシュボード拡張で対応</li>
+          <li>「小学生向けにやさしいUIにしたい」→ UIカスタマイズで対応</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- App Screenshots -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">アプリ画面</h2>
+    <p class="section-sub">開発中の画面イメージです。</p>
+    <div class="screenshots">
+      <div class="screenshot-item">
+        <img src="screenshots/language.png" alt="言語選択"
+             onerror="this.outerHTML='<div class=screenshot-placeholder>言語選択</div>'">
+        <div class="caption">9言語対応</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshots/home.png" alt="ホーム画面"
+             onerror="this.outerHTML='<div class=screenshot-placeholder>ホーム画面</div>'">
+        <div class="caption">今日のおすすめ</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshots/freetalk.png" alt="AIフリートーク"
+             onerror="this.outerHTML='<div class=screenshot-placeholder>AIフリートーク</div>'">
+        <div class="caption">AI会話練習</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshots/vocab.png" alt="単語ドリル"
+             onerror="this.outerHTML='<div class=screenshot-placeholder>単語ドリル</div>'">
+        <div class="caption">語彙力強化</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshots/listening.png" alt="リスニング"
+             onerror="this.outerHTML='<div class=screenshot-placeholder>リスニング</div>'">
+        <div class="caption">聞き取り練習</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshots/cards.png" alt="復習カード"
+             onerror="this.outerHTML='<div class=screenshot-placeholder>復習カード</div>'">
+        <div class="caption">間隔反復学習</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshots/practice.png" alt="練習メニュー"
+             onerror="this.outerHTML='<div class=screenshot-placeholder>練習メニュー</div>'">
+        <div class="caption">全機能一覧</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- Comparison -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">既存サービスとの比較</h2>
+    <p class="section-sub">
+      日本で利用されている主要な英語学習サービスとの機能比較です。<br>
+      それぞれのサービスには強みがありますが、本アプリは<strong>「オールAI」による個別最適化</strong>と<strong>OEM提供</strong>が特長です。
+    </p>
+    <div class="comparison">
+      <table>
+        <thead>
+          <tr>
+            <th>機能</th>
+            <th>Duolingo</th>
+            <th>スタディサプリ</th>
+            <th>シャドテン</th>
+            <th>ChatGPT</th>
+            <th>本アプリ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>AI会話練習</strong><br><small>AIと自由に英会話できるか</small></td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td><strong>音声入出力</strong><br><small>話して聞ける双方向音声</small></td>
+            <td class="cross">-</td>
+            <td class="cross">聞くのみ</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td><strong>問題の個別生成</strong><br><small>その人専用の問題をAIが作るか</small></td>
+            <td class="cross">定型</td>
+            <td class="cross">定型</td>
+            <td class="cross">定型</td>
+            <td class="cross">-</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td><strong>ドリル種類</strong><br><small>単語/文法/構文/イディオム/英作文/リスニング</small></td>
+            <td>語彙中心</td>
+            <td>講義+演習</td>
+            <td>リスニングのみ</td>
+            <td class="cross">-</td>
+            <td class="check">6種</td>
+          </tr>
+          <tr>
+            <td><strong>間隔反復カード</strong><br><small>忘却曲線に基づく自動復習</small></td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td><strong>リスニング練習</strong><br><small>ディクテーション/要点把握/シャドーイング</small></td>
+            <td class="cross">-</td>
+            <td>講義形式</td>
+            <td class="check">シャドーイング</td>
+            <td class="cross">-</td>
+            <td class="check">3モード</td>
+          </tr>
+          <tr>
+            <td><strong>長文読解</strong><br><small>レベル別の記事・読解練習</small></td>
+            <td class="cross">-</td>
+            <td class="check">&#10003;</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="check">AI生成</td>
+          </tr>
+          <tr>
+            <td><strong>発音練習</strong></td>
+            <td class="check">&#10003;</td>
+            <td class="cross">-</td>
+            <td class="check">&#10003;</td>
+            <td class="cross">-</td>
+            <td class="planned">対応予定</td>
+          </tr>
+          <tr>
+            <td><strong>CEFR / レベル対応</strong></td>
+            <td class="check">&#10003;</td>
+            <td>独自レベル</td>
+            <td>WPM基準</td>
+            <td class="cross">-</td>
+            <td class="check">CEFR</td>
+          </tr>
+          <tr>
+            <td><strong>弱点の自動分析</strong><br><small>苦手分野を特定して重点出題</small></td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td><strong>貴社ブランドで提供</strong><br><small>アプリ名・アイコンをカスタマイズ</small></td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="check">OEM</td>
+          </tr>
+          <tr>
+            <td><strong>カリキュラム連動</strong><br><small>教室の教材に合わせた問題設定</small></td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td><strong>生徒の学習データ管理</strong><br><small>講師・保護者向けダッシュボード</small></td>
+            <td class="cross">-</td>
+            <td>法人版のみ</td>
+            <td class="cross">-</td>
+            <td class="cross">-</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td><strong>対象レベル</strong></td>
+            <td>初級中心</td>
+            <td>初級〜中級</td>
+            <td>中級〜上級</td>
+            <td>全レベル</td>
+            <td>中級〜上級</td>
+          </tr>
+          <tr>
+            <td><strong>月額費用（個人）</strong></td>
+            <td>無料 / ¥1,100</td>
+            <td>¥2,178〜</td>
+            <td>¥21,780</td>
+            <td>無料 / $20</td>
+            <td>OEM価格</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="intro-prose" style="margin-top: 32px;">
+      <p>
+        <strong>Duolingo</strong>はゲーム感覚で楽しく学べる一方、定型問題の繰り返しが中心で、中級以上の伸びには限界があります。
+        <strong>スタディサプリ</strong>は質の高い講義コンテンツが強みですが、インタラクティブなAI会話機能はありません。
+        <strong>シャドテン</strong>はシャドーイング特化で発音改善に定評がありますが、月額が高く、会話練習やドリル機能はカバーしていません。
+        <strong>ChatGPT</strong>は会話の自由度は高いものの、体系的な学習管理・ドリル・復習機能がなく、学習アプリとしての設計はされていません。
+      </p>
+      <p>
+        本アプリは、これらのサービスが個別にカバーしている領域を<strong>AIによるコンテンツ生成で横断的に対応</strong>し、
+        さらに<strong>貴社の教室に特化したカスタマイズとOEM提供</strong>ができる点が特長です。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- OEM -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section style="background: #F1F5F9;">
+  <div class="container">
+    <h2 class="section-title">OEM提供について</h2>
+    <p class="section-sub">
+      このアプリをベースに、貴社の教室に合わせたカスタマイズが可能です。<br>
+      AIネイティブで開発しているため、ご要望に応じた機能追加や調整を柔軟に行えます。
+    </p>
+    <div class="oem-grid">
+      <div class="oem-card">
+        <h4>ブランディング</h4>
+        <p>アプリ名・アイコン・カラーテーマを貴社のブランドに合わせて変更できます。App Storeへの公開も貴社名義で行えます。</p>
+      </div>
+      <div class="oem-card">
+        <h4>カリキュラム連動</h4>
+        <p>貴社の教材やテスト範囲に合わせたドリル設定が可能です。「今週はUnit 3の単語」といった指定もできます。</p>
+      </div>
+      <div class="oem-card">
+        <h4>生徒管理ダッシュボード</h4>
+        <p>生徒ごとの学習時間・正答率・弱点分野をWeb画面で一覧管理。保護者へのレポートにもご活用いただけます。</p>
+      </div>
+      <div class="oem-card">
+        <h4>対象言語・レベルの調整</h4>
+        <p>英語のみに限定する、特定のレベル帯に集中させるなど、貴社の教室に合った設定が可能です。</p>
+      </div>
+      <div class="oem-card">
+        <h4>試験対策モード</h4>
+        <p>英検・TOEIC・TOEFL・IELTSなど、生徒が目指す試験に合わせた問題を重点的に出題する設定が可能です。</p>
+      </div>
+      <div class="oem-card">
+        <h4>その他の機能追加</h4>
+        <p>AIネイティブの設計思想で開発しているため、「こういう機能がほしい」というご要望にも柔軟にお応えできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CTA -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2>ご興味をお持ちいただけましたら</h2>
+    <p>
+      デモのご案内や、貴社の教室に合わせたカスタマイズのご相談など、<br>
+      お気軽にお問い合わせください。
+    </p>
+    <a href="mailto:k.miyazawa@hatenabase.com?subject=%E8%AA%9E%E5%AD%A6%E5%AD%A6%E7%BF%92%E3%82%A2%E3%83%97%E3%83%AA%20OEM%E6%8F%90%E4%BE%9B%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" class="cta-btn">
+      お問い合わせ
+    </a>
+    <p style="margin-top: 20px; font-size: 13px; opacity: 0.6;">
+      はてなベース株式会社 | k.miyazawa@hatenabase.com
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- Footer -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 はてなベース株式会社</p>
+  </div>
+</footer>
+
+</body>
+</html>
